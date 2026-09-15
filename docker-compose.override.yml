@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  qbittorrentvpn:
+    volumes:
+      - /mnt/intstorage/torrent-ssd:/storage/torrent-ssd
+    environment:
+      - VPN_USER=${PROTONVPN_USER}
+      - VPN_PASS=${PROTONVPN_PASS}
+
+  plex:
+    network_mode: host
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+
+  deemix:
+    volumes:
+      - /mnt/intstorage/vault2/data2/media2/music:/downloads
+
+  minecraftserver:
+    network_mode: host
+    environment:
+      - RCON_PASSWORD=${MINECRAFT_RCON_PASS}
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
