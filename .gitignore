@@ -1,0 +1,11 @@
+# DockSTARTer secrets and environment variables
+.env
+*.env
+
+# Application runtime state
+appdata/
+logs/
+
+# Archives
+*.tar.gz
+*.bak
